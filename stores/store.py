@@ -16,6 +16,12 @@ class Store:
     def _find_record_by_url(self, url):
         pass
 
+    def get_short(self, original_url):
+        pass
+
+    def get_original(self, url_id):
+        pass
+
     def increment_hit_count(self, url):
         pass
 

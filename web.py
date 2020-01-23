@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, redirect
 from flask import abort
 
 from stores.volatile_store import VolatileStore
@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 usage = {
     1: 'GET /url -> list all url store (temp)',
-    2: 'PUT /url/short_id -> return original url',
+    2: 'GET /url/short_id -> return original url',
     3: 'POST /url -> return short url, original url is given in body with "url" key'
 }
 
@@ -32,7 +32,8 @@ def list_url_store():
 def get_original_url(short_id):
     result = url_store.get_original(short_id)
     if result:
-        return result
+        return redirect(result)
+        # return result
     abort(404)
 
 
